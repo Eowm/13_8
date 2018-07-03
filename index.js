@@ -10,12 +10,14 @@ server.on('request', function (request, response) {
 		fs.readFile('./index.html', (err, data) => {
   			if (err) throw err;
   			response.write(data);
+  			response.end()
 		});
     } else {
     	response.setHeader("Content-Type", "image/png; charset=utf-8");
     	fs.readFile('./404.png', (err, data) => {
   			if (err) throw err;
   			response.write(data);
+  			response.end()
 		});
     }
 });
