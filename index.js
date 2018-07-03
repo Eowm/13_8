@@ -12,8 +12,8 @@ server.on('request', function (request, response) {
   			response.write(data);
 		});
     } else {
-    	response.setHeader("Content-Type", "image/jpeg; charset=utf-8");
-    	fs.readFile('./404.jpeg', (err, data) => {
+    	response.setHeader("Content-Type", "image/png; charset=utf-8");
+    	fs.readFile('./404.png', (err, data) => {
   			if (err) throw err;
   			response.write(data);
 		});
