@@ -12,10 +12,11 @@ server.on('request', function (request, response) {
   			response.write(data);
 		});
     } else {
-            response.statusCode = 404;
-            response.write('<h1>404: Zła ścieżka!</h1>');
-            response.write('<img src="https://res.cloudinary.com/twenty20/private_images/t_watermark-criss-cross-10/v1447810665000/photosp/75b8edd4-d562-4698-8fd1-5e37afc70184/stock-photo-reflection-number-gold-brass-shine-address-internet-error-404-75b8edd4-d562-4698-8fd1-5e37afc70184.jpg">')
-            response.end();
+    	response.setHeader("Content-Type", "image/jpeg; charset=utf-8");
+    	fs.readFile('./404.jpeg', (err, data) => {
+  			if (err) throw err;
+  			response.write(data);
+		});
     }
 });
 
