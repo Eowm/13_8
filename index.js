@@ -7,15 +7,10 @@ var server = http.createServer();
 server.on('request', function (request, response) {
     response.setHeader("Content-Type", "text/html; charset=utf-8");
     if (request.method === 'GET' && request.url === '/hello') {
-    	fs.writeFile('./index.html', function(err) {
-		 if (err) throw err;
-  		console.log('The file has been saved!');
+		fs.readFile('./index.html', (err, data) => {
+  			if (err) throw err;
+  			response.write(data);
 		});
-		response.write('<html>');
-		response.write('<body>');
-		response.write('<h1>Hello, World!</h1>');
-		response.write('</body>');
-		response.write('</html>');
     } else {
             response.statusCode = 404;
             response.write('<h1>404: Zła ścieżka!</h1>');
